@@ -1,6 +1,9 @@
 package com.revature.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
+import java.util.Properties;
 
 /**
  * <p>This ConnectionFactory class follows the Singleton Design Pattern and facilitates obtaining a connection to a Database for the ERS application.</p>
@@ -8,12 +11,28 @@ import java.sql.Connection;
  */
 public class ConnectionFactory {
 
-    private static ConnectionFactory instance;
+    private static ConnectionFactory cf = null;
+    private static Properties dbProps;
 
-    private ConnectionFactory() {
+    private ConnectionFactory ConnectionFactory() {
         super();
-    }
+        dbProps = new Properties();
+        InputStream props = ConnectionFactory.class.getClassLoader().getResourceAsStream("connection.properties");
 
+        try {
+            dbProps.load(props);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    public static synchronized ConnectionFactory getConnectionFactory(){
+            if (cf == null) {
+                cf= new ConnectionFactory();
+            }
+            return cf;
+
+        }
     /**
      * <p>This method follows the Singleton Design Pattern to restrict this class to only having 1 instance.</p>
      * <p>It is invoked via:</p>

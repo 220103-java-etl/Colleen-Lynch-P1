@@ -1,15 +1,22 @@
 package com.revature.repositories;
 
 import com.revature.models.User;
+import com.revature.util.ConnectionFactory;
+
+import java.sql.Connection;
 
 import java.util.Optional;
 
-public class UserDAO {
+import java.util.List;
 
+
+public class UserDAO implements GenericDAO{
+        ConnectionFactory cu = ConnectionFactory.getConnectionFactory();
     /**
      * Should retrieve a User from the DB with the corresponding username or an empty optional if there is no match.
      */
     public Optional<User> getByUsername(String username) {
+        for (User u :)
         return Optional.empty();
     }
 
@@ -25,5 +32,30 @@ public class UserDAO {
      */
     public User create(User userToBeRegistered) {
         return userToBeRegistered;
+    }
+
+    @Override
+    public Object add(Object o) {
+        return null;
+    }
+
+    @Override
+    public Object getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List getAll() {
+        return null;
+    }
+
+    @Override
+    public void update(Object o) {
+
+    }
+
+    @Override
+    public void delete(Integer id) {
+
     }
 }
