@@ -20,8 +20,7 @@ import java.util.Objects;
  * @author Center of Excellence
  */
 public class AbstractReimbursement {
-
-    private int id;
+    private int rbId;
     private Status status;
     private User author;
     private User resolver;
@@ -31,76 +30,76 @@ public class AbstractReimbursement {
         super();
     }
 
-    public AbstractReimbursement(int id, Status status, User author, User resolver, double amount) {
+    public AbstractReimbursement(int rbId, Status status, User author, User resolver, double amount) {
         super();
-        this.id = id;
+        this.rbId = rbId;
         this.status = status;
         this.author = author;
         this.resolver = resolver;
         this.amount = amount;
-    }
 
-    public int getId() {
-        return id;
     }
+        public int getRbId () {
+            return rbId;
+        }
+        public void setRbId ( int rbid){
+            this.rbId = rbId;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        public Status getStatus () {
+            return status;
+        }
+        public void setStatus (Status status) {
+            this.status = status;
+        }
+            public
+            User getAuthor() {
+                return author;
+            }
+            public void setAuthor( User author){
+                this.author = author;
+            }
+            public
+            User getResolver() {
+                return resolver;
+            }
+            public void setResolver( User resolver){
+                this.resolver = resolver;
+            }
+            public double getAmount() {
+                return amount;
+            }
+            public void setAmount(double amount){
+                this.amount = amount;
+            }
 
-    public Status getStatus() {
-        return status;
-    }
 
-    public void setStatus(Status status) {
-        this.status = status;
-    }
+            @Override
+            public boolean equals (Object o){
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                AbstractReimbursement that = (AbstractReimbursement) o;
+                return rbId == that.rbId && Double.compare(that.amount, amount) == 0 && status == that.status && Objects.equals(author, that.author) && Objects.equals(resolver, that.resolver);
+            }
 
-    public User getAuthor() {
-        return author;
-    }
+            @Override
+            public int hashCode() {
+                return Objects.hash(rbId, status, author, resolver, amount);
+            }
 
-    public void setAuthor(User author) {
-        this.author = author;
-    }
+            @Override
+            public String toString() {
+                return "AbstractReimbursement{" +
+                        "rbId=" + rbId +
+                        ", status=" + status +
+                        ", author=" + author +
+                        ", resolver=" + resolver +
+                        ", amount=" + amount +
+                        '}';
+            }
 
-    public User getResolver() {
-        return resolver;
-    }
-
-    public void setResolver(User resolver) {
-        this.resolver = resolver;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AbstractReimbursement that = (AbstractReimbursement) o;
-        return id == that.id && Double.compare(that.amount, amount) == 0 && status == that.status && Objects.equals(author, that.author) && Objects.equals(resolver, that.resolver);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, status, author, resolver, amount);
-    }
-
-    @Override
-    public String toString() {
-        return "AbstractReimbursement{" +
-                "id=" + id +
-                ", status=" + status +
-                ", author=" + author +
-                ", resolver=" + resolver +
-                ", amount=" + amount +
-                '}';
+    public
+    Object getId() {
+        return null;
     }
 }

@@ -1,8 +1,10 @@
 package com.revature.services;
 
 import com.revature.models.User;
+import com.revature.repositories.UserDAO;
 
 import java.util.Optional;
+import java.util.Scanner;
 
 /**
  * The AuthService should handle login and registration for the ERS application.
@@ -28,8 +30,20 @@ public class AuthService {
      * </ul>
      */
     public User login(String username, String password) {
+
+        User u = UserDAO.getByUsername(username);
+
+        if (u != null) {
+            if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
+                return u;
+            }
+        }
+
+        System.out.print("Username and Password do not match");
         return null;
     }
+
+
 
     /**
      * <ul>
@@ -40,11 +54,12 @@ public class AuthService {
      *     <li>Must return user object if the user registers successfully.</li>
      *     <li>Must throw exception if provided user has a non-zero ID</li>
      * </ul>
-     *
+     * <p>
      * Note: userToBeRegistered will have an id=0, additional fields may be null.
      * After registration, the id will be a positive integer.
      */
-    public User register(User userToBeRegistered) {
+    public static
+    User register(User userToBeRegistered) {
         return null;
     }
 
@@ -53,7 +68,8 @@ public class AuthService {
      * It leverages the Optional type which is a useful interface to handle the
      * possibility of a user being unavailable.
      */
-    public Optional<User> exampleRetrieveCurrentUser() {
+    public
+    Optional<User> exampleRetrieveCurrentUser() {
         return Optional.empty();
     }
 }

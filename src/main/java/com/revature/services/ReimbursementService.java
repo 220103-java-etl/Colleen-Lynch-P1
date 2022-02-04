@@ -3,6 +3,8 @@ package com.revature.services;
 import com.revature.models.Reimbursement;
 import com.revature.models.Status;
 import com.revature.models.User;
+import com.revature.repositories.ReimbursementDAO;
+import com.revature.repositories.UserDAO;
 
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +28,7 @@ import java.util.List;
  */
 public class ReimbursementService {
 
+
     /**
      * <ul>
      *     <li>Should ensure that the user is logged in as a Finance Manager</li>
@@ -35,7 +38,7 @@ public class ReimbursementService {
      *     <li>Should persist the updated reimbursement status with resolver information</li>
      *     <li>Must throw exception if persistence is unsuccessful</li>
      * </ul>
-     *
+     * <p>
      * Note: unprocessedReimbursement will have a status of PENDING, a non-zero ID and amount, and a non-null Author.
      * The Resolver should be null. Additional fields may be null.
      * After processing, the reimbursement will have its status changed to either APPROVED or DENIED.
@@ -47,7 +50,42 @@ public class ReimbursementService {
     /**
      * Should retrieve all reimbursements with the correct status.
      */
+
     public List<Reimbursement> getReimbursementsByStatus(Status status) {
         return Collections.emptyList();
+    }
+
+    public
+    Object getAllReimbursement() {
+        return null;
+    }
+
+
+    public
+    Reimbursement newReimbursement(Reimbursement reimbursement, User user) {
+        return reimbursement;
+    }
+
+    public
+    List<Reimbursement> getAllByUser(User user) {
+        return null;
+    }
+
+    public
+    Reimbursement addReimbursement(Reimbursement r) {
+        return r;
+    }
+
+    public
+    Reimbursement getReimbursementById(int rbId) {
+        return null;
+    }
+
+    public
+    void updateReimbursement(Reimbursement r) {
+    }
+
+    public
+    void deleteReimbursement(Object id) {
     }
 }

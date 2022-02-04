@@ -2,8 +2,10 @@ package com.revature.util;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
+import java.sql.*;
+import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
 /**
  * <p>This ConnectionFactory class follows the Singleton Design Pattern and facilitates obtaining a connection to a Database for the ERS application.</p>
@@ -14,7 +16,11 @@ public class ConnectionFactory {
     private static ConnectionFactory cf = null;
     private static Properties dbProps;
 
-    private ConnectionFactory ConnectionFactory() {
+    public static ConnectionFactory getInstance() {
+        return null;
+    }
+
+    private ConnectionFactory() {
         super();
         dbProps = new Properties();
         InputStream props = ConnectionFactory.class.getClassLoader().getResourceAsStream("connection.properties");
@@ -24,34 +30,38 @@ public class ConnectionFactory {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-    public static synchronized ConnectionFactory getConnectionFactory(){
-            if (cf == null) {
-                cf= new ConnectionFactory();
-            }
-            return cf;
-
-        }
-    /**
-     * <p>This method follows the Singleton Design Pattern to restrict this class to only having 1 instance.</p>
-     * <p>It is invoked via:</p>
-     *
-     * {@code ConnectionFactory.getInstance()}
-     */
-    public static ConnectionFactory getInstance() {
-        if(instance == null) {
-            instance = new ConnectionFactory();
-        }
-
-        return instance;
     }
 
-    /**
-     * <p>The {@link ConnectionFactory#getConnection()} method is responsible for leveraging a specific Database Driver to obtain an instance of the {@link java.sql.Connection} interface.</p>
-     * <p>Typically, this is accomplished via the use of the {@link java.sql.DriverManager} class.</p>
-     */
+    public static synchronized ConnectionFactory getConnectionFactory() {
+        if (cf == null) {
+            cf = new ConnectionFactory();
+        }
+        return cf;
+
+    }
+
     public Connection getConnection() {
-        return null;
+        Connection conn = null;
+
+        try {
+            Class.forName(dbProps.getProperty("driver"));
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String url = dbProps.getProperty("url");
+        String username = dbProps.getProperty("username");
+        String password = dbProps.getProperty("password");
+
+        try {
+            conn = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return conn;
+
     }
+
+
 }

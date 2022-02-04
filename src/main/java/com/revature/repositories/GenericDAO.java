@@ -1,5 +1,8 @@
 package com.revature.repositories;
 
+import com.revature.models.Reimbursement;
+import com.revature.models.Status;
+
 import java.util.List;
 
 public interface GenericDAO<T> {
@@ -11,6 +14,8 @@ public interface GenericDAO<T> {
     T getById(Integer id);
 
     List<T> getAll();
+
+    List<Reimbursement> getByStatus(Status status);
 
     // Update
     void update(T t);

@@ -1,5 +1,9 @@
 package com.revature.models;
 
+import java.sql.Ref;
+import java.sql.SQLException;
+import java.util.Map;
+
 /**
  * Reimbursements within the ERS application transition through the following statuses:
  * <ul>
@@ -13,7 +17,7 @@ package com.revature.models;
  *
  * @author Center of Excellence
  */
-public enum Status {
+public enum Status implements Ref {
 
     PENDING {
         @Override
@@ -32,5 +36,29 @@ public enum Status {
         public String toString() {
             return "Denied";
         }
+    };
+
+    @Override
+    public
+    String getBaseTypeName() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public
+    Object getObject(Map<String, Class<?>> map) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public
+    Object getObject() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public
+    void setObject(Object value) throws SQLException {
+
     }
 }

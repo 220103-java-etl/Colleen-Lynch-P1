@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Reimbursement Form</title>
+    <meta charset="UTF-10">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    body, html {
+  text-align: center;
+  background-color: linen;
+  height: 100%;
+  font-family: monospace;
+}
+#borderimg {
+  border: 10px solid;
+  padding: 15px;
+  border-image: url(border.png) 30 round;
+}
+button {
+    margin: 0 auto;
+    display: block;
+}
+
+</style>
+</head>
+<title><h1 style="background-color: light blue;">Employee Reimbursement Form </h1> </title>
+<body>
+
+<form action="/action_page.php" method="post">
+
+    <div style="background-color: corns-ilk;"></div>
+    <h3> Please fill out the information below:</h3>
+
+    <label for="date">Today's Date:</label>
+    <input type="date" id="today's date" name="date"><br>
+<div>
+    <h4>Employee Information:</h4>
+
+
+
+    <!--date, time, location, description, cost, grading format,
+    and type of event; work-related justification-->
+    <div style="background-color: blanched almond;"></div>
+    <h4> Please enter the following information regarding the training you attended:<br></h4>
+    <label for="date">Date of training:</label><br>
+    <input type="date" id="date" name="date"><br>
+    <label for="time">Time:</label><br>
+    <input type="time" id="time" name="time"><br>
+    <label for="training">Name of Training:</label><br>
+    <input type="text" id="training" name="training"><br>
+    <label for="streetaddress">Street address:</label><br>
+    <input type="text" id="streetaddress" name="streetaaddress"><br>
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city"><br>
+    <label for="state">State:</label><br>
+    <input type="text" id="state" name="state"><br>
+    <label for="zip">Zip code:</label><br>
+    <input type="text" id="zip" name="zip"><br>
+    <label for="cost">Cost of training:</label><br>
+    <input type="text" id="cost" name="cost"><br>
+</div>
+    <!--University Courses 80%, Seminars 60%, Certification Preparation Classes 75%,
+        Certification 100%, Technical Training 90%, Other -->
+    <h4>Please choose one of the below options:</h4>
+    <div style="text-align:center;">
+        <input type = "radio" id="university" name="university" value="University Course">
+        <label for="university">University Course</label><br>
+        <input type="radio" id="seminar" name="seminar" value="Seminar">
+        <label for="seminar"> Seminar</label><br>
+        <input type = "radio" id="certificationclass" name="certificationclass" value="Certification Preparation Classes">
+        <label for="certificationclass">Certification Preparation Classes</label><br>
+        <input type="radio" id="certification" name="certification" value="Certification">
+        <label for="certification"> Certification</label><br>
+        <input type = "radio" id="technicaltraining" name="technicaltraining" value="Technical Training">
+        <label for="technicaltraining">Technical Training</label><br>
+        <input type="radio" id="other" name="other" value="Other">
+        <label for="other"> Other</label><br>
+    </div>
+    <br>
+    If other please explain:<br><br>
+    <textarea name="otherdescription" rows="3" cols="50">
+</textarea>
+    <br><br>
+</form>
+<form>
+    <h4>Please enter a description of the training you attended and how it relates to your current role with this company:</h4>
+    <br>
+    <textarea name="description" rows="12" cols="50">
+
+</textarea>
+
+    <br>
+
+</form>
+
+<br>
+<input type="submit" value="Submit"><br>
+<input type="submit"
+       value="Submit with validation">
+
+<br>
+<form>
+<h5></h5>
+<p id="borderimg"><h5>Note:
+    After a Finance Manager has approved a reimbursement, the reimbursement is
+    pending until a passing grade or presentation over the event is provided. </h5>
+</form>
+
+</body>
+</html>
