@@ -119,6 +119,21 @@ public class AbstractUser {
         return Objects.hash(id, firstName, lastName, email, phoneNumber, address, username, password, role);
     }
 
+    public
+    void User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public
+    void User(Integer id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
+
     @Override
     public String toString() {
         return "AbstractUser{" +

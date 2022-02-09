@@ -1,19 +1,14 @@
-package servlet;
+package com.revature.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.Reimbursement;
-import com.revature.models.User;
 import com.revature.services.ReimbursementService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 //public class FormServlet extends HttpServlet {
 //    @Override
@@ -28,7 +23,7 @@ import java.util.List;
 //    }
 //}
 
-public class FormServlet extends HttpServlet {
+public class EmpRbFormServlet extends HttpServlet {
     ObjectMapper om = new ObjectMapper();
     ReimbursementService reimbursementService = new ReimbursementService();
 

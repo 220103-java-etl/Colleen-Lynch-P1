@@ -11,11 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public class UserDAO implements GenericDAO<User> {
     static ConnectionFactory cf = ConnectionFactory.getConnectionFactory();
+    private String username;
 
 
     /**
@@ -38,7 +38,7 @@ public class UserDAO implements GenericDAO<User> {
     @Override
     public User add(User user) {
         String sql = "insert into users values (default, ?, ?, ?, ?) returning *";
-        try(Connection conn = cf.getConnection()) {
+        try (Connection conn = cf.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, user.getId());
             ps.setString(2, user.getFirstName());
@@ -51,7 +51,6 @@ public class UserDAO implements GenericDAO<User> {
             ps.setRef(9, user.getRole());
 
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 user.setId(rs.getInt("id"));
                 return user;
@@ -62,10 +61,9 @@ public class UserDAO implements GenericDAO<User> {
         return null;
     }
 
-
-    @Override
-    public User getById(Integer id) {
-        String sql = "select * from users where id = ?";
+                @Override
+                public User getById(Integer id) {
+        String sql = "select * from users where emp_id = ?";
 
         try (Connection conn = cf.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -102,7 +100,7 @@ public class UserDAO implements GenericDAO<User> {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     User u = new User(
-                            rs.getInt("id"),
+                            rs.getInt("emp_id"),
                             rs.getString("first_name"),
                             rs.getString("last_name"),
                             rs.getString("email"),
@@ -111,33 +109,25 @@ public class UserDAO implements GenericDAO<User> {
                             rs.getString("username"),
                             rs.getString("password"),
                             (Role) rs.getRef("role")
-
                     );
                     return u;
                 }
-
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
-
             return null;
-
     }
 
     @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
     String sql = "select * from users";
-    try(
-    Connection conn = cf.getConnection()){
+    try(Connection conn = cf.getConnection()){
         PreparedStatement ps =conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             User u = new User(
-                    rs.getInt("id"),
+                    rs.getInt("emp_id"),
                     rs.getString("first_name"),
                     rs.getString("last_name"),
                     rs.getString("email"),
@@ -149,17 +139,17 @@ public class UserDAO implements GenericDAO<User> {
             );
             users.add(u);
         }
+
         return users;
     } catch(SQLException e) {
         e.printStackTrace();
     }
     return null;
-
 }
 
+
     @Override
-    public
-    List<Reimbursement> getByStatus(Status status) {
+    public List<Reimbursement> getByStatus(Status status) {
         return null;
     }
 
@@ -196,4 +186,35 @@ String sql = "update users set first_name = ?, last_name = ?, email = ?, phone_n
         }
 
     }
+    private String lastName;
+
+    public
+    User getByLastName(String lastName) {
+        String sql = "select * from users where lastName = ?";
+        try (Connection conn = cf.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, lastName);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                User u = new User(
+                        rs.getInt("emp_id"),
+                        rs.getString("first_name"),
+                        rs.getString("last_name"),
+                        rs.getString("email"),
+                        rs.getInt("phone_number"),
+                        rs.getString("address"),
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        (Role) rs.getRef("role")
+                );
+                return u;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private List<User> users;
+
 }

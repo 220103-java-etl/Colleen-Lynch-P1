@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.models.User;
 import com.revature.repositories.UserDAO;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ import java.util.Scanner;
  * </ul>
  */
 public class AuthService {
+    private UserDAO userDAO = new UserDAO();
 
     /**
      * <ul>
@@ -30,17 +32,19 @@ public class AuthService {
      * </ul>
      */
     public User login(String username, String password) {
-
         User u = UserDAO.getByUsername(username);
 
         if (u != null) {
             if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
                 return u;
             }
+        }else {
+            System.out.print("Username and Password do not match");
         }
-
-        System.out.print("Username and Password do not match");
         return null;
+    }
+    public List<User> getAll(){
+        return userDAO.getAll();
     }
 
 
@@ -58,8 +62,7 @@ public class AuthService {
      * Note: userToBeRegistered will have an id=0, additional fields may be null.
      * After registration, the id will be a positive integer.
      */
-    public static
-    User register(User userToBeRegistered) {
+    public User register(User userToBeRegistered) {
         return null;
     }
 

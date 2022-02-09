@@ -102,4 +102,9 @@ public class AbstractReimbursement {
     Object getId() {
         return null;
     }
+
+    public
+    boolean getAccessOfReqForm(int i) {
+        return false;
+    }
 }

@@ -16,9 +16,9 @@ public class ConnectionFactory {
     private static ConnectionFactory cf = null;
     private static Properties dbProps;
 
-    public static ConnectionFactory getInstance() {
-        return null;
-    }
+//    public static ConnectionFactory getInstance() {
+//        return null;
+//    }
 
     private ConnectionFactory() {
         super();
