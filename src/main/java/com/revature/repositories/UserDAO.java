@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UserDAO implements GenericDAO<User> {
     static ConnectionFactory cf = ConnectionFactory.getConnectionFactory();
-    private String username;
+
 
 
     /**
@@ -37,18 +37,17 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public User add(User user) {
-        String sql = "insert into users values (default, ?, ?, ?, ?) returning *";
+        String sql = "insert into users values (default, ?, ?, ?, ?, ?, ?, ?, ?) returning *";
         try (Connection conn = cf.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, user.getId());
-            ps.setString(2, user.getFirstName());
-            ps.setString(3, user.getLastName());
-            ps.setString(4, user.getEmail());
-            ps.setInt(5, user.getPhoneNumber());
-            ps.setString(6, user.getAddress());
-            ps.setString(7, user.getUsername());
-            ps.setString(8, user.getPassword());
-            ps.setRef(9, user.getRole());
+            ps.setString(1, user.getFirstName());
+            ps.setString(2, user.getLastName());
+            ps.setString(3, user.getEmail());
+            ps.setInt(4, user.getPhoneNumber());
+            ps.setString(5, user.getAddress());
+            ps.setString(6, user.getUsername());
+            ps.setString(7, user.getPassword());
+            ps.setRef(8, user.getRole());
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -61,8 +60,14 @@ public class UserDAO implements GenericDAO<User> {
         return null;
     }
 
-                @Override
-                public User getById(Integer id) {
+    @Override
+    public
+    User getById(Integer id) {
+        return null;
+    }
+
+    @Override
+    public User getById(int id) {
         String sql = "select * from users where emp_id = ?";
 
         try (Connection conn = cf.getConnection()) {
@@ -150,8 +155,7 @@ public class UserDAO implements GenericDAO<User> {
 
     @Override
     public List<Reimbursement> getByStatus(Status status) {
-        return null;
-    }
+        return null;}
 
     @Override
     public void update(User user) {

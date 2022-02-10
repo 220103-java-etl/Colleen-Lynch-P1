@@ -2,6 +2,7 @@ package com.revature.repositories;
 
 import com.revature.models.Reimbursement;
 import com.revature.models.Status;
+import com.revature.models.User;
 
 import java.util.List;
 
@@ -12,6 +13,8 @@ public interface GenericDAO<T> {
 
     // Read
     T getById(Integer id);
+
+    User getById(int id);
 
     List<T> getAll();
 

@@ -1,11 +1,12 @@
 package com.revature.services;
 
+import com.revature.models.Role;
 import com.revature.models.User;
+import com.revature.models.UserBuilder;
 import com.revature.repositories.UserDAO;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 
 /**
  * The AuthService should handle login and registration for the ERS application.
@@ -21,6 +22,7 @@ import java.util.Scanner;
  */
 public class AuthService {
     private UserDAO userDAO = new UserDAO();
+
 
     /**
      * <ul>
@@ -62,8 +64,15 @@ public class AuthService {
      * Note: userToBeRegistered will have an id=0, additional fields may be null.
      * After registration, the id will be a positive integer.
      */
-    public User register(User userToBeRegistered) {
-        return null;
+//    public User Register(User userToBeRegistered) {
+//        return null;
+//    }
+
+    public User register(User u) {
+//            int id, String firstName, String lastName, String email, Integer phoneNumber, String address, String userName, String password, Role role){
+//        User u = new UserBuilder().setId(id).setFirstName(firstName).setLastName(lastName).setEmail(email).setPhoneNumber(phoneNumber).setAddress(address).setUsername(userName).setPassword(password).setRole(role).createUser();
+        u = userDAO.add(u);
+        return u;
     }
 
     /**
@@ -75,4 +84,7 @@ public class AuthService {
     Optional<User> exampleRetrieveCurrentUser() {
         return Optional.empty();
     }
+
+
+
 }

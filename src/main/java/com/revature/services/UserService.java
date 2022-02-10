@@ -40,8 +40,8 @@ public class UserService {
 		System.out.println("Credentials do not match");
 		return null;
 	}
-	public User Register(int id, String firstName, String lastName, String email, int phoneNumber, String address, String username,String password, String role){
-		User U = new User(id, firstName,lastName,email, phoneNumber, address, username,password, Role.valueOf(role));
+	public User Register(int id, String firstName, String lastName, String email, int phoneNumber, String address, String username, String password, Role role){
+		User U = new User(id, firstName, lastName, email, phoneNumber, address, username, password, role);
 		U = userDAO.add(U);
 		return U;
 	}

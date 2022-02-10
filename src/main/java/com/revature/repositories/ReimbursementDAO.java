@@ -72,6 +72,12 @@ public class ReimbursementDAO implements GenericDAO<Reimbursement> {
     }
 
     @Override
+    public
+    User getById(int id) {
+        return null;
+    }
+
+    @Override
     public List<Reimbursement> getAll() {
         return null;
     }

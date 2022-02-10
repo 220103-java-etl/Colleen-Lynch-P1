@@ -1,7 +1,5 @@
 package com.revature.models;
 
-import java.sql.Ref;
-
 /**
  * This concrete User class can include additional fields that can be used for
  * extended functionality of the ERS application.
@@ -29,19 +27,22 @@ public class User extends AbstractUser {
 //    private String password;
 //    private Enum role;
 
-    public
-    User() {
-        super();
-    }
 
-    public
-    User(int id, String firstName, String lastName, String email, int phoneNumber, String address, String username, String password, Role role) {
+
+    public User(Integer id, String firstName, String lastName, String email, int phoneNumber, String address, String username, String password, Role role) {
         super(id, firstName, lastName, email, phoneNumber, address, username, password, role);
     }
 
-    public
-    User(String firstName, String lastName, String email, Integer phoneNumber, String address, String username, String password, Role role) {
-    }
+//    public User(int id, String firstName, String lastName, String email, Integer phoneNumber, String address, String username, String password, Role role) {
+//        super(id, firstName, lastName, email, phoneNumber, address, username, password, role);
+//    }
+//
+//    public User(int emp_id, String first_name, String last_name, String email, int phone_number, String address, String username, String password, Role role) {
+//        super();
+//    }
+//
+//    public User(Integer id, String firstName, String lastName, String email, Integer phoneNumber, String address, String username, String password, Role role) {
+//    }
 }
 //        this.id=id;
 //        this.firstName=firstName;
